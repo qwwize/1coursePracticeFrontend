@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>ShortLink</title>
+  <link rel="stylesheet" href="src/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <!-- Шапка -->
+  <header class="header">
+    <div class="logo"> ShortLink</div>
+    <div class="stats">
+      <span id="links-count">0</span>
+    </div>
+  </header>
+
+  <!-- Основной контент -->
+  <main class="main">
+    <!-- Поле ввода -->
+    <div class="input-group">
+      <input type="url" id="url-input" placeholder="Вставьте ссылку...">
+      <button id="shorten-btn" class="btn primary">Сократить</button>
+    </div>
+
+    <!-- QR-код -->
+    <div class="qr-block">
+      <div id="qr"></div>
+      <div class="qr-actions">
+        <button id="qr-generate-btn" class="btn small"> Обновить</button>
+        <button id="qr-download-btn" class="btn small"> Скачать</button>
+        <button id="qr-settings-toggle" class="btn small"> Настройки</button>
+      </div>
+
+      <!-- Настройки QR -->
+      <div id="qr-settings" class="qr-settings" style="display:none">
+        <div class="setting-row">
+          <label>Цвет</label>
+          <input type="color" id="qr-color" value="#000000">
+        </div>
+        <div class="setting-row">
+          <label>Точки</label>
+          <select id="qr-dots">
+            <option value="rounded">Закругл</option>
+            <option value="square">Квадрат</option>
+            <option value="dots">Точки</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <label>Размер</label>
+          <input type="range" id="qr-size" min="150" max="350" value="200">
+        </div>
+        <div class="setting-row">
+          <label>Логотип</label>
+          <input type="text" id="qr-logo" placeholder="URL логотипа">
+        </div>
+        <button id="qr-apply" class="btn primary small"> Применить</button>
+      </div>
+    </div>
+
+    <!-- Список ссылок -->
+    <div class="links-section">
+      <div class="links-header">
+        <span> Мои ссылки</span>
+        <button id="clear-btn" class="btn small"> Очистить</button>
+      </div>
+      
+      <table class="links-table">
+        <thead>
+          <tr>
+            <th>Оригинал</th>
+            <th>Короткая</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody id="links-tbody">
+          <!-- Строки будут добавляться сюда -->
+        </tbody>
+      </table>
+      
+      <div id="empty-state" style="display:none; text-align:center; padding:2rem; color:#7a7a9a;">
+         Нет сокращённых ссылок
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Template для строк таблицы -->
+<template id="row-template">
+  <tr>
+    <td class="original"></td>
+    <td class="short"></td>
+    <td>
+      <button class="btn small copy-btn">📋</button>
+      <button class="btn small qr-btn">📱</button>
+      <button class="btn small danger delete-btn">✕</button>
+    </td>
+  </tr>
+</template>
+
+<script src="src/script.js"></script>
+</body>
+</html>
