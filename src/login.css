@@ -7,11 +7,14 @@
 
 * { box-sizing: border-box; }
 
+html { width: 100%; min-height: 100%; }
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  padding: clamp(16px, 2.5vw, 40px);
+  width: 100%;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -21,11 +24,11 @@ button, input { font: inherit; }
   position: relative;
   display: grid;
   place-items: center;
-  width: 100%;
-  min-height: calc(100vh - 2 * clamp(16px, 2.5vw, 40px));
-  max-height: calc(100vh - 2 * clamp(16px, 2.5vw, 40px));
+  width: 100vw;
+  min-height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
-  border-radius: 34px;
+  border-radius: 0;
   background:
     radial-gradient(circle at 15% 52%, rgba(221, 232, 255, .8), transparent 34%),
     radial-gradient(circle at 88% 42%, rgba(243, 225, 255, .7), transparent 32%),
@@ -35,9 +38,9 @@ button, input { font: inherit; }
 .login-card {
   position: relative;
   z-index: 3;
-  width: min(560px, calc(100% - 48px));
-  max-height: calc(100vh - 2 * clamp(32px, 5vw, 72px));
-  padding: clamp(24px, 3.2vh, 38px) clamp(32px, 3.5vw, 52px);
+  width: min(620px, calc(100% - 48px));
+  max-height: calc(100vh - clamp(32px, 6vh, 64px));
+  padding: clamp(26px, 3.6vh, 42px) clamp(38px, 4vw, 62px);
   border: 1px solid rgba(187, 201, 255, .72);
   border-radius: 30px;
   background: rgba(255, 255, 255, .94);
@@ -47,16 +50,16 @@ button, input { font: inherit; }
 .login-card__icon {
   display: grid;
   place-items: center;
-  width: clamp(68px, 8vh, 84px);
-  height: clamp(68px, 8vh, 84px);
-  margin: 0 auto clamp(14px, 2vh, 20px);
+  width: clamp(72px, 9vh, 92px);
+  height: clamp(72px, 9vh, 92px);
+  margin: 0 auto clamp(15px, 2.2vh, 22px);
   border-radius: 19px;
   color: white;
   background: linear-gradient(145deg, #5573f7, #6865f5);
   box-shadow: 0 12px 25px rgba(86, 105, 244, .25);
 }
 
-.login-card__icon svg { width: clamp(38px, 4.5vh, 46px); }
+.login-card__icon svg { width: clamp(40px, 5vh, 50px); }
 .login-card__icon path,
 .field__icon *,
 .password-toggle svg *,
@@ -72,7 +75,7 @@ button, input { font: inherit; }
 h1 {
   margin: 0;
   text-align: center;
-  font-size: clamp(38px, 4.6vh, 50px);
+  font-size: clamp(40px, 5.2vh, 54px);
   line-height: 1.12;
   letter-spacing: -.035em;
 }
@@ -81,7 +84,7 @@ h1 {
   margin: clamp(6px, 1vh, 10px) 0 clamp(20px, 3vh, 30px);
   color: #7e899f;
   text-align: center;
-  font-size: clamp(17px, 2vh, 20px);
+  font-size: clamp(18px, 2.2vh, 22px);
   line-height: 1.4;
 }
 
@@ -89,7 +92,7 @@ h1 {
 
 .login-form label {
   margin: 0 0 8px;
-  font-size: clamp(16px, 1.8vh, 18px);
+  font-size: clamp(17px, 2vh, 20px);
   font-weight: 600;
 }
 
@@ -97,7 +100,7 @@ h1 {
   position: relative;
   display: flex;
   align-items: center;
-  height: clamp(52px, 6vh, 62px);
+  height: clamp(54px, 6.5vh, 66px);
   margin-bottom: clamp(14px, 2vh, 20px);
   border: 2px solid #e1e5ee;
   border-radius: 14px;
@@ -112,8 +115,8 @@ h1 {
 
 .field__icon {
   flex: 0 0 auto;
-  width: 24px;
-  margin-left: 18px;
+  width: 26px;
+  margin-left: 20px;
   color: #8cabfb;
 }
 
@@ -126,7 +129,7 @@ h1 {
   outline: 0;
   color: #151a27;
   background: transparent;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .field input::placeholder { color: #9ba5ba; opacity: 1; }
@@ -134,7 +137,7 @@ h1 {
 .password-toggle {
   display: grid;
   place-items: center;
-  flex: 0 0 58px;
+  flex: 0 0 62px;
   height: 100%;
   padding: 0;
   border: 0;
@@ -143,19 +146,19 @@ h1 {
   cursor: pointer;
 }
 
-.password-toggle svg { width: 25px; }
+.password-toggle svg { width: 27px; }
 .password-toggle:focus-visible { outline: 3px solid #91a5fa; outline-offset: -6px; border-radius: 10px; }
 
 .submit-button {
   position: relative;
-  height: clamp(54px, 6.3vh, 64px);
+  height: clamp(56px, 6.8vh, 68px);
   border: 0;
   border-radius: 14px;
   color: #fff;
   background: linear-gradient(100deg, #5575f8 0%, #8551ef 100%);
   box-shadow: 0 16px 28px rgba(111, 78, 238, .28);
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .submit-button:hover { filter: brightness(1.04); }
@@ -169,7 +172,7 @@ h1 {
   gap: 22px;
   margin: clamp(20px, 2.8vh, 28px) 0 clamp(14px, 2vh, 20px);
   color: #8993a6;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .divider::before, .divider::after {
@@ -184,11 +187,11 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 18px;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .registration a {
-  padding: 9px 16px;
+  padding: 10px 18px;
   border-radius: 14px;
   color: #20242f;
   background: linear-gradient(110deg, #d6ff9e, #bdf16e);
@@ -214,8 +217,8 @@ h1 {
   z-index: 1;
   display: grid;
   place-items: center;
-  width: clamp(70px, 6vw, 96px);
-  height: clamp(70px, 6vw, 96px);
+  width: clamp(78px, 6.5vw, 108px);
+  height: clamp(78px, 6.5vw, 108px);
   border-radius: 22px;
   box-shadow: 0 18px 35px rgba(90, 100, 160, .12);
 }
@@ -229,9 +232,7 @@ h1 {
 .decor--bolt { right: 7.5%; bottom: 8%; color: #7d9df6; background: #dfebff; transform: rotate(13deg); }
 
 @media (max-width: 1000px) {
-  body { padding: 24px; }
-  .login-page { min-height: calc(100vh - 48px); max-height: calc(100vh - 48px); }
-  .login-card { width: min(560px, calc(100% - 40px)); }
+  .login-card { width: min(600px, calc(100% - 40px)); }
   .decor { opacity: .45; }
 }
 
