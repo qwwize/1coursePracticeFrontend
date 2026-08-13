@@ -38,9 +38,13 @@ form.addEventListener('submit', async (event) => {
   result.classList.add('is-visible');
 
   if (!qrCode) {
-    const qrModule = await import('./qr-code.js');
-    qrCode = qrModule.createQrCode(qrContainer, DEMO_SHORT_URL, { size: 116, dotsType: 'square' });
-    downloadQrCode = qrModule.downloadQrCode;
+    try {
+      const qrModule = await import('./qr-code.js');
+      qrCode = qrModule.createQrCode(qrContainer, DEMO_SHORT_URL, { size: 116, dotsType: 'square' });
+      downloadQrCode = qrModule.downloadQrCode;
+    } catch {
+      qrContainer.textContent = 'Не удалось загрузить QR-код';
+    }
   }
 });
 

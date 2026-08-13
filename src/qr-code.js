@@ -1,6 +1,8 @@
-import QRCodeStyling from 'qr-code-styling';
-
 export function createQrCode(container, data, options = {}) {
+  if (typeof QRCodeStyling === 'undefined') {
+    throw new Error('Библиотека QR-кода не загрузилась');
+  }
+
   const size = options.size ?? 200;
   const color = options.color ?? '#000000';
 

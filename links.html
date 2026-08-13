@@ -4,8 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Мои ссылки — ShortLink</title>
+    <link rel="stylesheet" href="/src/links.css" />
   </head>
   <body>
-    <!-- Интерфейс списка ссылок будет добавлен после получения макета. -->
+    <header class="site-header">
+      <a class="brand" href="/create-link.html" aria-label="ShortLink">
+        <span class="brand__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
+        <span>ShortLink</span>
+      </a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a class="main-nav__link" href="/create-link.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span>Создать ссылку</span></a>
+        <a class="main-nav__link is-active" href="/links.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="13" height="14" rx="2"/><path d="M9 5V3h10a2 2 0 0 1 2 2v12h-3"/></svg><span>Мои ссылки</span></a>
+        <a class="main-nav__link" href="/link-statistics.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h4v10M10 20V4h4v16M16 20v-7h4v7M2 20h20"/></svg><span>Статистика</span></a>
+      </nav>
+      <div class="account" aria-label="Аккаунт"><span class="account__avatar">A</span><span>Алексей</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></div>
+    </header>
+
+    <main class="links-page">
+      <div class="orbit" aria-hidden="true"></div>
+      <div class="decor decor--link" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M19 28a8 8 0 0 0 11 0l7-7a8 8 0 0 0-11-11l-4 4"/><path d="M29 20a8 8 0 0 0-11 0l-7 7a8 8 0 0 0 11 11l4-4"/></svg></div>
+      <div class="decor decor--qr" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="7" y="7" width="12" height="12"/><rect x="29" y="7" width="12" height="12"/><rect x="7" y="29" width="12" height="12"/><path d="M29 29h5v5h-5zM38 29h3v7M29 38h7v3M39 39h2"/></svg></div>
+
+      <section class="links-content" aria-labelledby="links-title">
+        <h1 id="links-title">Мои ссылки</h1>
+        <div class="table-card">
+          <div class="links-table" role="table" aria-label="Мои короткие ссылки">
+            <div class="table-header" role="row">
+              <span role="columnheader">Название</span><span role="columnheader">Короткая ссылка</span><span role="columnheader">Оригинальная ссылка</span><span role="columnheader">Дата</span><span role="columnheader">QR</span><span role="columnheader">Удалить</span>
+            </div>
+            <div class="table-body"></div>
+          </div>
+          <p class="empty-message" hidden>Ссылок пока нет</p>
+        </div>
+        <nav class="pagination" aria-label="Страницы списка"></nav>
+      </section>
+    </main>
+
+    <dialog class="qr-dialog" aria-labelledby="qr-dialog-title">
+      <button class="dialog-close" type="button" aria-label="Закрыть">×</button>
+      <h2 id="qr-dialog-title">QR-код</h2>
+      <div class="dialog-qr"></div>
+    </dialog>
+
+    <template id="link-row-template">
+      <div class="table-row" role="row">
+        <div class="name-cell" role="cell"><span class="item-icon"></span><span class="link-name"></span></div>
+        <div role="cell"><a class="short-url" target="_blank" rel="noreferrer"></a></div>
+        <div role="cell"><a class="original-url" target="_blank" rel="noreferrer"></a></div>
+        <div class="date-cell" role="cell"><span></span><span></span></div>
+        <div role="cell"><button class="icon-button qr-button" type="button" aria-label="Показать QR-код"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="6" height="6"/><rect x="15" y="3" width="6" height="6"/><rect x="3" y="15" width="6" height="6"/><path d="M15 15h3v3h-3zM21 15v6M15 21h3"/></svg></button></div>
+        <div role="cell"><button class="icon-button delete-button" type="button" aria-label="Удалить ссылку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14M10 11v6M14 11v6"/></svg></button></div>
+      </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.9.2/lib/qr-code-styling.js"></script>
+    <script type="module" src="/src/links.js"></script>
   </body>
 </html>
