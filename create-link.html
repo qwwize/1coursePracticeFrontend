@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Создание короткой ссылки — ShortLink</title>
+    <link rel="stylesheet" href="/src/create-link.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/create-link.html" aria-label="ShortLink">
+        <span class="brand__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
+        <span>ShortLink</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a class="main-nav__link is-active" href="/create-link.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span>Создать ссылку</span></a>
+        <a class="main-nav__link" href="/links.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="13" height="14" rx="2"/><path d="M9 5V3h10a2 2 0 0 1 2 2v12h-3"/></svg><span>Мои ссылки</span></a>
+        <a class="main-nav__link" href="/link-statistics.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h4v10M10 20V4h4v16M16 20v-7h4v7M2 20h20"/></svg><span>Статистика</span></a>
+      </nav>
+
+      <div class="account" aria-label="Аккаунт">
+        <span class="account__avatar">A</span><span>Аккаунт</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg>
+      </div>
+    </header>
+
+    <main class="create-page">
+      <div class="orbit" aria-hidden="true"></div>
+      <span class="orbit-dot orbit-dot--left" aria-hidden="true"></span>
+      <span class="orbit-dot orbit-dot--right" aria-hidden="true"></span>
+
+      <div class="decor decor--link-left" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M19 28a8 8 0 0 0 11 0l7-7a8 8 0 0 0-11-11l-4 4"/><path d="M29 20a8 8 0 0 0-11 0l-7 7a8 8 0 0 0 11 11l4-4"/></svg></div>
+      <div class="decor decor--qr" aria-hidden="true"><svg viewBox="0 0 48 48"><rect x="7" y="7" width="12" height="12"/><rect x="29" y="7" width="12" height="12"/><rect x="7" y="29" width="12" height="12"/><path d="M29 29h5v5h-5zM38 29h3v7M29 38h7v3M39 39h2"/></svg></div>
+      <div class="decor decor--chart" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 40V25h8v15M20 40V10h8v30M32 40V20h8v20M5 40h38"/></svg></div>
+      <div class="decor decor--cursor" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="m12 7 24 21-12 2-6 11Z"/></svg></div>
+      <div class="decor decor--star" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="m24 7 5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1Z"/></svg></div>
+      <div class="decor decor--link-right" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M19 28a8 8 0 0 0 11 0l7-7a8 8 0 0 0-11-11l-4 4"/><path d="M29 20a8 8 0 0 0-11 0l-7 7a8 8 0 0 0 11 11l4-4"/></svg></div>
+
+      <section class="create-card" aria-labelledby="create-title">
+        <div class="create-card__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M18 28a8 8 0 0 0 11 0l5-5a8 8 0 0 0-11-11l-3 3"/><path d="M28 20a8 8 0 0 0-11 0l-5 5a8 8 0 0 0 11 11l3-3M38 31v12M32 37h12"/></svg></div>
+        <h1 id="create-title">Создание короткой ссылки</h1>
+        <p class="create-card__subtitle">Вставьте длинный URL и получите<br />короткую ссылку и QR-код</p>
+
+        <form class="create-form" novalidate>
+          <label for="url">Вставьте URL</label>
+          <div class="url-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+            <input id="url" name="url" type="url" placeholder="https://example.com/very-long-url" required aria-describedby="url-error" />
+          </div>
+          <p class="form-error" id="url-error" aria-live="polite"></p>
+          <button class="create-button" type="submit"><span>Создать</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
+        </form>
+
+        <div class="result-divider" aria-hidden="true"><span>↓</span></div>
+
+        <section class="result" aria-label="Результат создания ссылки">
+          <div class="result__link-column">
+            <h2>Короткая ссылка</h2>
+            <div class="short-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><a href="https://site.ru/AbCd12" target="_blank" rel="noreferrer">https://site.ru/AbCd12</a></div>
+            <button class="action-button copy-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span>Скопировать</span></button>
+          </div>
+          <div class="result__qr-column">
+            <h2>QR-код</h2>
+            <div class="qr-code" aria-label="QR-код короткой ссылки"></div>
+            <button class="action-button download-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 20h14"/></svg><span>Скачать</span></button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.9.2/lib/qr-code-styling.js"></script>
+    <script type="module" src="/src/create-link.js"></script>
+  </body>
+</html>
