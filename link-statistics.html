@@ -4,8 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Статистика ссылки — ShortLink</title>
+    <link rel="stylesheet" href="/src/link-statistics.css" />
   </head>
   <body>
-    <!-- Интерфейс статистики будет добавлен после получения макета. -->
+    <header class="site-header">
+      <a class="brand" href="/create-link.html" aria-label="ShortLink">
+        <span class="brand__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
+        <span>ShortLink</span>
+      </a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a class="main-nav__link" href="/create-link.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg><span>Создать ссылку</span></a>
+        <a class="main-nav__link" href="/links.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="13" height="14" rx="2"/><path d="M9 5V3h10a2 2 0 0 1 2 2v12h-3"/></svg><span>Мои ссылки</span></a>
+        <a class="main-nav__link is-active" href="/link-statistics.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h4v10M10 20V4h4v16M16 20v-7h4v7M2 20h20"/></svg><span>Статистика</span></a>
+      </nav>
+      <div class="account" aria-label="Аккаунт"><span class="account__avatar">A</span><span>Аккаунт</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 10 4 4 4-4"/></svg></div>
+    </header>
+
+    <main class="statistics-page">
+      <div class="orbit" aria-hidden="true"></div>
+      <div class="decor decor--chart" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 38 18 26l8 5 13-18"/><circle cx="8" cy="38" r="2"/><circle cx="18" cy="26" r="2"/><circle cx="26" cy="31" r="2"/><circle cx="39" cy="13" r="2"/></svg></div>
+      <div class="decor decor--users" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="20" cy="17" r="7"/><path d="M8 39v-4c0-6 5-10 12-10s12 4 12 10v4M34 15a6 6 0 0 1 0 12M37 30c3 1 5 4 5 8"/></svg></div>
+      <div class="decor decor--pie" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M22 7a17 17 0 1 0 17 17H22Z"/><path d="M27 7v12h12A17 17 0 0 0 27 7Z"/></svg></div>
+      <div class="decor decor--cursor" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="m12 7 24 21-12 2-6 11Z"/></svg></div>
+      <div class="decor decor--star" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="m24 7 5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1Z"/></svg></div>
+      <div class="decor decor--shield" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 6 38 11v10c0 10-6 17-14 21-8-4-14-11-14-21V11Z"/><path d="m18 24 4 4 8-8"/></svg></div>
+
+      <section class="statistics-content" aria-labelledby="statistics-title">
+        <h1 id="statistics-title">Статистика ссылки</h1>
+        <p class="statistics-subtitle">Подробная информация о переходах по вашей ссылке</p>
+
+        <article class="total-card">
+          <div class="total-card__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 40V25h8v15M20 40V10h8v30M32 40V20h8v20M5 40h38"/></svg></div>
+          <div><h2>Всего переходов</h2><strong>153</strong></div>
+          <svg class="trend" viewBox="0 0 260 100" aria-hidden="true"><path d="M5 85c34-45 61-27 94-39s47 12 82-10 39-30 74-31"/><circle cx="5" cy="85" r="5"/></svg>
+        </article>
+
+        <article class="recent-card">
+          <h2>Последние переходы</h2>
+          <ul class="recent-list">
+            <li><span class="calendar-icon" aria-hidden="true">▣</span><span>23 июля</span></li>
+            <li><span class="calendar-icon" aria-hidden="true">▣</span><span>22 июля</span></li>
+            <li><span class="calendar-icon" aria-hidden="true">▣</span><span>22 июля</span></li>
+          </ul>
+        </article>
+
+        <nav class="pagination" aria-label="Страницы последних переходов">
+          <button type="button" aria-label="Предыдущая страница">‹</button>
+          <button class="is-active" type="button" aria-label="Страница 1" aria-current="page">1</button>
+          <button type="button" aria-label="Страница 2">2</button>
+          <button type="button" aria-label="Страница 3">3</button>
+          <button type="button" aria-label="Следующая страница">›</button>
+        </nav>
+      </section>
+    </main>
+
+    <script type="module" src="/src/link-statistics.js"></script>
   </body>
 </html>

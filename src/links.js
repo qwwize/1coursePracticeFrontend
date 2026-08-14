@@ -1,6 +1,6 @@
 import { createQrCode } from './qr-code.js';
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 4;
 const testLinks = [
   { id: 1, name: 'Мой сайт', shortUrl: 'https://site.ru/AbCd12', originalUrl: 'https://mysite.com', date: '24.05.2025', time: '12:45' },
   { id: 2, name: 'Презентация', shortUrl: 'https://site.ru/XyZk98', originalUrl: 'https://docs.google.com/presentation', date: '23.05.2025', time: '09:30' },
