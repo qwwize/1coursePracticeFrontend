@@ -1,4 +1,5 @@
 import { createQrCode } from './qr-code.js';
+import { hasSavedLinks, loadLinks, removeLink, saveLinks } from './link-utils.js';
 
 const PAGE_SIZE = 4;
 const testLinks = [
@@ -15,7 +16,13 @@ const testLinks = [
   { id: 11, name: 'Учебный проект', shortUrl: 'https://site.ru/Study9', originalUrl: 'https://university.example.com/project', date: '14.05.2025', time: '17:30' },
 ];
 
-let links = [...testLinks];
+const linksWereSaved = hasSavedLinks();
+let links = loadLinks();
+
+if (!linksWereSaved) {
+  links = [...testLinks];
+  saveLinks(links);
+}
 let currentPage = 1;
 const tableBody = document.querySelector('.table-body');
 const template = document.querySelector('#link-row-template');
@@ -32,12 +39,15 @@ function renderLinks() {
 
   visibleLinks.forEach((link) => {
     const row = template.content.firstElementChild.cloneNode(true);
-    row.querySelector('.link-name').textContent = link.name;
+    const nameLink = row.querySelector('.link-name');
+    nameLink.textContent = link.name || 'Ссылка';
+    nameLink.href = `/link-statistics.html?id=${encodeURIComponent(link.id)}`;
     setLink(row.querySelector('.short-url'), link.shortUrl);
     setLink(row.querySelector('.original-url'), link.originalUrl);
     const dateParts = row.querySelectorAll('.date-cell span');
-    dateParts[0].textContent = link.date;
-    dateParts[1].textContent = link.time;
+    const [date, time] = getDateParts(link);
+    dateParts[0].textContent = date;
+    dateParts[1].textContent = time;
     row.querySelector('.qr-button').addEventListener('click', () => showQr(link));
     row.querySelector('.delete-button').addEventListener('click', () => deleteLink(link.id));
     tableBody.append(row);
@@ -54,8 +64,26 @@ function setLink(element, url) {
 }
 
 function deleteLink(id) {
-  links = links.filter((link) => link.id !== id);
+  links = removeLink(links, id);
+  saveLinks(links);
   renderLinks();
+}
+
+function getDateParts(link) {
+  if (!link.createdAt) {
+    return [link.date || '', link.time || ''];
+  }
+
+  const createdAt = new Date(link.createdAt);
+
+  if (Number.isNaN(createdAt.getTime())) {
+    return ['', ''];
+  }
+
+  return [
+    createdAt.toLocaleDateString('ru-RU'),
+    createdAt.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }),
+  ];
 }
 
 function showQr(link) {

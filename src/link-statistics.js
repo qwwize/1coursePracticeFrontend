@@ -1,3 +1,12 @@
+import { loadLinks } from './link-utils.js';
+
+const selectedLinkId = new URLSearchParams(window.location.search).get('id');
+const selectedLink = loadLinks().find((link) => String(link.id) === selectedLinkId);
+
+if (selectedLink) {
+  document.body.dataset.linkId = String(selectedLink.id);
+}
+
 const paginationButtons = document.querySelectorAll('.pagination button');
 const numberedButtons = [...paginationButtons].slice(1, -1);
 

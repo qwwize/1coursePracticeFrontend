@@ -54,6 +54,8 @@ h1 { margin: 0 0 clamp(24px, 3vh, 34px); text-align: center; font-size: clamp(36
 .table-row { min-height: clamp(72px, 8vh, 88px); padding: 0 20px; border-bottom: 1px solid #e3e6ef; }
 .table-row:last-child { border-bottom: 0; }
 .name-cell { min-width: 0; font-size: 16px; font-weight: 500; }
+.link-name { color: inherit; text-decoration: none; }
+.link-name:hover { color: #6559f3; }
 .short-url, .original-url { display: block; overflow: hidden; text-decoration: none; text-overflow: ellipsis; white-space: nowrap; }
 .short-url { color: #6559f3; font-size: 16px; font-weight: 600; }
 .original-url { color: #65718b; font-size: 15px; }

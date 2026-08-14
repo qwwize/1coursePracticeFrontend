@@ -35,6 +35,10 @@ export function saveLinks(links) {
   localStorage.setItem(LINKS_STORAGE_KEY, JSON.stringify(links));
 }
 
+export function hasSavedLinks() {
+  return localStorage.getItem(LINKS_STORAGE_KEY) !== null;
+}
+
 export function removeLink(links, linkId) {
   return links.filter((link) => link.id !== linkId);
 }
